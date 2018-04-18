@@ -10,8 +10,8 @@ To summarize we have 3 entities: User, Company and Contacts. So, if I wish retri
 # Dependencies
 
 * [Serverless framework](https://serverless.com)
-* * [serverless-offline plugin](https://github.com/dherault/serverless-offline) 
-* * [serverless-dynamodb-local plugin](https://github.com/99xt/serverless-dynamodb-local) 
+  * [serverless-offline](https://github.com/dherault/serverless-offline) 
+  * [serverless-dynamodb-local](https://github.com/99xt/serverless-dynamodb-local) 
 * [Apollo Server - Lambda](https://www.apollographql.com/docs/apollo-server/servers/lambda.html)
 
 To understand the concepts and code implemented in this repo it's necessary a basic knowledge of GraphQL, Serverless Architecture and Node.js programming language.
@@ -43,3 +43,23 @@ Basically, the project contains two handlers, as you can see at [serverless.yml]
 * `graphql`: whose implementation is in [handler.js](./handler.js) file, more specifically at line 11. This handler is responsible to process requests throught GraphQL using apollo-server-lambda implementation. In other words is the Backend API of our project.
 * `graphiql`: whose implementation is in [handler.js](./handler.js) file, more specifically at line 25. This handler returns a GraphQL Client implementation called graphiql. Where you can write your queries and see the results.
 
+Other important files are:
+
+* [schema.js](./schema.js): Where we define the GraphQL types, queries, mutations and subscriptions, which makes up the GraphQL Schema.
+* [resolvers.js](./resolvers.js): The implementation of GraphQL resolvers based on types and queries defined at `schema.js`.
+* [repository](./repository/): The repository folder contains the code to integrate with data layer. We have used DynamoDB to persist data.
+* [seed-data](./seed-data/): The seed-data folder contains sample data used on offline mode. See `serverless-dynamodb-local` for more information.
+
+# See it in action
+
+Just open the link `http://localhost:3000/graphiql` in your browser.
+
+![In action](./docs/images/in_action.gif)
+
+# Next steps
+
+* Compares [Apollo Engine](https://www.apollographql.com/docs/engine/setup-lambda.html) and [AppSync](https://hackernoon.com/running-a-scalable-reliable-graphql-endpoint-with-serverless-24c3bb5acb43) to manage cache and metrics about the GraphQL API
+
+# About
+
+* devs@cubo.network

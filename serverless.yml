@@ -1,0 +1,177 @@
+service: serverless-graphql-rest-api
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
+
+custom:
+  stage: ${env:SLS_STAGE, opt:stage, self:provider.stage}
+  dynamodb:
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+      seed: true
+    seed:
+      users:
+        sources:
+          - table: "${self:custom.stage}.users"
+            sources: [seed-data/users.json]
+          - table: "${self:custom.stage}.companies"
+            sources: [seed-data/companies.json]
+          - table: "${self:custom.stage}.contacts"
+            sources: [seed-data/contacts.json]
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: us-east-1
+  role: defaultRole
+  environment:
+    STAGE: ${self:custom.stage}
+
+functions:
+  graphql:
+    handler: handler.graphqlHandler
+    events:
+    - http:
+        path: graphql
+        method: post
+        cors: true
+  
+  graphiql:
+    handler: handler.graphiqlHandler
+    events:
+    - http:
+        path: graphiql
+        method: get
+        cors: true
+
+
+resources:
+  Resources:
+
+    ##
+    # Tables
+    ##
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: "${self:custom.stage}.users"
+        AttributeDefinitions:
+          - AttributeName: uid
+            AttributeType: S
+        KeySchema:
+          - AttributeName: uid
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 10
+          WriteCapacityUnits: 10
+    companiesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: "${self:custom.stage}.companies"
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 10
+          WriteCapacityUnits: 10
+    contactsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: "${self:custom.stage}.contacts"
+        AttributeDefinitions:
+          - AttributeName: email
+            AttributeType: S
+          - AttributeName: companyId
+            AttributeType: S
+          - AttributeName: createdAt
+            AttributeType: N
+        KeySchema:
+          - AttributeName: email
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 10
+          WriteCapacityUnits: 10
+        GlobalSecondaryIndexes:
+          - IndexName: companyId-index
+            KeySchema:
+              - AttributeName: companyId
+                KeyType: HASH
+              - AttributeName: createdAt
+                KeyType: RANGE
+            Projection:
+              ProjectionType: ALL
+            ProvisionedThroughput:
+              ReadCapacityUnits: 10
+              WriteCapacityUnits: 10
+
+    ##
+    # IAM ROLE
+    ##
+    defaultRole:
+      Type: AWS::IAM::Role
+      Properties:
+        RoleName: ${self:service}-${self:custom.stage}-${self:provider.region}-defaultRole
+        AssumeRolePolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service:
+                  - lambda.amazonaws.com
+              Action: sts:AssumeRole
+        Policies:
+          - PolicyName: ${self:service}-${self:custom.stage}-defaultServerlessPolicy
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - logs:CreateLogGroup
+                    - logs:CreateLogStream
+                    - logs:PutLogEvents
+                  Resource:
+                    - 'Fn::Join':
+                      - ':'
+                      -
+                        - 'arn:aws:logs'
+                        - Ref: 'AWS::Region'
+                        - Ref: 'AWS::AccountId'
+                        - 'log-group:/aws/lambda/*:*:*'
+                - Effect: Allow
+                  Action:
+                    - SNS:Publish
+                  Resource: "*"
+                - Effect: Allow
+                  Action:
+                    - dynamodb:Query
+                    - dynamodb:Scan
+                    - dynamodb:GetItem
+                    - dynamodb:PutItem
+                    - dynamodb:UpdateItem
+                    - dynamodb:DeleteItem
+                    - dynamodb:BatchGetItem
+                  Resource: "*"
+                - Effect: Allow
+                  Action:
+                    - dynamodb:GetRecords
+                    - dynamodb:GetShardIterator
+                    - dynamodb:DescribeStream
+                    - dynamodb:ListStreams
+                  Resource: "*"
+                - Effect: Allow
+                  Action:
+                    - lambda:InvokeFunction
+                    - lambda:InvokeAsync
+                  Resource: "*"
+                - Effect: Allow
+                  Action:
+                    - xray:PutTraceSegments
+                    - xray:PutTelemetryRecords
+                  Resource:
+                    - "*"

@@ -1,0 +1,30 @@
+{
+  "name": "serverless-graphql-rest-api",
+  "version": "1.0.0",
+  "description": "The porpuse of this repo is to create a REST API using GraphQL and Serverless framework.",
+  "scripts": {
+    "offline": "sls offline start"
+  },
+  "keywords": [
+    "graphql",
+    "serverless",
+    "nodejs",
+    "dynamodb",
+    "aws"
+  ],
+  "author": "Cubo Network",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-engine": "^1.1.0",
+    "apollo-server-lambda": "^1.3.4",
+    "aws-xray-sdk": "^1.2.0",
+    "graphql": "^0.13.2",
+    "graphql-tools": "^2.24.0",
+    "lodash": "^4.17.5",
+    "serverless-dynamodb-local": "^0.2.28"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.224.1",
+    "serverless-offline": "^3.20.2"
+  }
+}

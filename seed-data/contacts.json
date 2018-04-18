@@ -1,0 +1,90 @@
+[
+  {
+    "email": "cleverson@cielo.com.br",
+    "name": "Cleverson",
+    "companyId": "1",
+    "createdAt": 1523992555000,
+    "connections": [
+      {
+        "uid": "1",
+        "rating": 2,
+        "source": "csv",
+        "createdAt": 1523992555000
+      }
+    ]
+  },
+  {
+    "email": "xhamps@itau-unibanco.com.br",
+    "name": "Xhamps Monstro",
+    "companyId": "2",
+    "createdAt": 1523992555000,
+    "connections": [
+      {
+        "uid": "2",
+        "rating": 1,
+        "source": "csv",
+        "createdAt": 1523992555000
+      }
+    ]
+  },
+  {
+    "email": "felipe@itau-unibanco.com.br",
+    "name": "Felipe",
+    "companyId": "2",
+    "createdAt": 1523992555000,
+    "connections": [
+      {
+        "uid": "2",
+        "rating": 1,
+        "source": "hubspot",
+        "createdAt": 1523992555000
+      }
+    ]
+  },
+  {
+    "email": "flavia@itau-unibanco.com.br",
+    "name": "Flávia Bicalho",
+    "companyId": "2",
+    "createdAt": 1523992555000,
+    "connections": [
+      {
+        "uid": "2",
+        "rating": 3,
+        "source": "csv",
+        "createdAt": 1523992555000
+      },
+      {
+        "uid": "3",
+        "rating": 5,
+        "source": "hubspot",
+        "createdAt": 1523992555000
+      },
+      {
+        "uid": "1",
+        "rating": 2,
+        "source": "pipedrive",
+        "createdAt": 1523992555000
+      }
+    ]
+  },
+  {
+    "email": "rgoslin@accenture.com.br",
+    "name": "Rodrigo Goslin",
+    "companyId": "3",
+    "createdAt": 1523992555000,
+    "connections": [
+      {
+        "uid": "3",
+        "rating": 5,
+        "source": "hubspot",
+        "createdAt": 1523992555000
+      },
+      {
+        "uid": "2",
+        "rating": 2,
+        "source": "hubspot",
+        "createdAt": 1523992555000
+      }
+    ]
+  }
+]

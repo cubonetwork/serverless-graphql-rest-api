@@ -1,6 +1,6 @@
-const UsersRepository = require('./repository/repositories/users-repository');
-const CompaniesRepository = require('./repository/repositories/companies-repository');
-const ContactsRepository = require('./repository/repositories/contacts-repository');
+const UsersRepository = require('./repository/repositories/repository-factory').getUsersRepository();
+const CompaniesRepository = require('./repository/repositories/repository-factory').getCompaniesRepository();
+const ContactsRepository = require('./repository/repositories/repository-factory').getContactsRepository();
 const ConnectionsService = require('./repository/services/connections-service');
 
 const resolvers = {

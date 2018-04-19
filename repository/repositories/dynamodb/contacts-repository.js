@@ -1,4 +1,4 @@
-const Dynamo = require('../infrastructure/aws/dynamodb');
+const Dynamo = require('../../infrastructure/aws/dynamodb');
 
 const TableName = `${process.env.STAGE}.contacts`;
 

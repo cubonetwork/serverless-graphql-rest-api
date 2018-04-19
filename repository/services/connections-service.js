@@ -1,5 +1,5 @@
 const _ = require('lodash/fp');
-const ContactsRepository = require('../repositories/contacts-repository');
+const ContactsRepository = require('../repositories/repository-factory').getContactsRepository();
 
 const getConnections = companyId => {
   return ContactsRepository.getByCompanyId(companyId)

@@ -16,11 +16,11 @@ custom:
       users:
         sources:
           - table: "${self:custom.stage}.users"
-            sources: [seed-data/users.json]
+            sources: [dynamodb/seed-data/users.json]
           - table: "${self:custom.stage}.companies"
-            sources: [seed-data/companies.json]
+            sources: [dynamodb/seed-data/companies.json]
           - table: "${self:custom.stage}.contacts"
-            sources: [seed-data/contacts.json]
+            sources: [dynamodb/seed-data/contacts.json]
 
 provider:
   name: aws

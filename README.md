@@ -48,7 +48,7 @@ Other important files are:
 * [schema.js](./schema.js): Where we define the GraphQL types, queries, mutations and subscriptions, which makes up the GraphQL Schema.
 * [resolvers.js](./resolvers.js): The implementation of GraphQL resolvers based on types and queries defined at `schema.js`.
 * [repository](./repository/): The repository folder contains the code to integrate with data layer. We have used DynamoDB to persist data.
-* [seed-data](./seed-data/): The seed-data folder contains sample data used on offline mode. See `serverless-dynamodb-local` for more information.
+* [dynamodb/seed-data](./dynamodb/seed-data/): The seed-data folder contains sample data used on offline mode. See `serverless-dynamodb-local` for more information.
 
 # See it in action
 
@@ -62,6 +62,18 @@ Just open the link `http://localhost:3000/graphiql` in your browser.
 * Reimplement this project using some GraphDB
   * Amazon Neptune: until now (04/19/2018) neptune is only available for whitelisted users and there is no integration from Lambda functions. To request a preview for Neptune [click here](https://pages.awscloud.com/NeptunePreview.html).
   * Neo4j: It's a good option, but, AWS there is no a managed service for neo4j. So you have to install and mantain it in a EC2 instance.
+
+## Neo4j
+
+To run neo4j using docker run the following command:
+
+```bash
+npm run neo4j:start
+```
+
+### Not implemented yet
+
+* [neo4j/seed-data.js](./neo4j/seed-data.js): the porpuse of this file is to create data on neo4j docker instance.
 
 # About
 

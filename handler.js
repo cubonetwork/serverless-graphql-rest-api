@@ -16,8 +16,8 @@ const graphqlHandler = (event, context, callback) => {
 
   const handler = graphqlLambda({ 
     schema: myGraphQLSchema,
-    //tracing: true,
-    //cacheControl: true
+    tracing: true,
+    cacheControl: true
   });
   return handler(event, context, callbackWithHeaders);
 };

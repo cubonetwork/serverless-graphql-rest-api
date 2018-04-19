@@ -59,6 +59,9 @@ Just open the link `http://localhost:3000/graphiql` in your browser.
 # Next steps
 
 * Compares [Apollo Engine](https://www.apollographql.com/docs/engine/setup-lambda.html) and [AppSync](https://hackernoon.com/running-a-scalable-reliable-graphql-endpoint-with-serverless-24c3bb5acb43) to manage cache and metrics about the GraphQL API
+* Reimplement this project using some GraphDB
+  * Amazon Neptune: until now (04/19/2018) neptune is only available for whitelisted users and there is no integration from Lambda functions. To request a preview for Neptune [click here](https://pages.awscloud.com/NeptunePreview.html).
+  * Neo4j: It's a good option, but, AWS there is no a managed service for neo4j. So you have to install and mantain it in a EC2 instance.
 
 # About
 

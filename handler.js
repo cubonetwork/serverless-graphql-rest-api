@@ -8,7 +8,7 @@ const myGraphQLSchema = makeExecutableSchema({
   resolvers,
 });
 
-const graphqlHandler = (event, context, callback) => {
+const graphqlHandler = async (event, context, callback) => {
   callbackWithHeaders = (error, output) => {
     output.headers['Access-Control-Allow-Origin'] = '*';
     callback(error, output);
@@ -19,6 +19,7 @@ const graphqlHandler = (event, context, callback) => {
     tracing: true,
     cacheControl: true
   });
+
   return handler(event, context, callbackWithHeaders);
 };
 

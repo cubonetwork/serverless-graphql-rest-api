@@ -1,12 +1,5 @@
 const { graphqlLambda, graphiqlLambda } = require('apollo-server-lambda');
-const { makeExecutableSchema } = require('graphql-tools');
-const { schema } = require('./schema');
-const { resolvers } = require('./resolvers');
-
-const myGraphQLSchema = makeExecutableSchema({
-  typeDefs: schema,
-  resolvers,
-});
+const myGraphQLSchema = require('./graphql/schema');
 
 const graphqlHandler = async (event, context, callback) => {
   callbackWithHeaders = (error, output) => {

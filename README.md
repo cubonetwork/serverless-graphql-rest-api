@@ -46,8 +46,9 @@ Basically, the project contains two handlers, as you can see at [serverless.yml]
 Other important files are:
 
 * [graphql](./graphql/): The graphql folder contains the graphql schema used for this project. In this folder you will find all schema's types, resolvers and queries. 
-  * [schema.js](./schema.js): Where we define the GraphQL types, queries, mutations and subscriptions, which makes up the GraphQL Schema.
-  * [resolvers.js](./resolvers.js): The implementation of GraphQL resolvers based on types and queries defined at `schema.js`.
+  * [schema.js](./graphql/schema.js): Where we define the GraphQL types, queries, mutations and subscriptions, which makes up the GraphQL Schema.
+  * [resolvers.js](./graphql/resolvers.js): The implementation of GraphQL resolvers based on types and queries defined at `schema.js`.
+  * [types.js](./graphql/types.js): Just an array of types which will by used at `schema.js`.
 * [core](./core/): The core folder contains the code to integrate with data layer. We have used DynamoDB to persist data.
 * [dynamodb/seed-data](./dynamodb/seed-data/): The seed-data folder contains sample data used on offline mode. See `serverless-dynamodb-local` for more information.
 

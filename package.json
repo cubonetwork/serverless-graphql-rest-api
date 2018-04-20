@@ -4,7 +4,8 @@
   "description": "The porpuse of this repo is to create a REST API using GraphQL and Serverless framework.",
   "scripts": {
     "offline": "sls offline start",
-    "neo4j:start": "cd neo4j; docker-compose up"
+    "neo4j:start": "cd neo4j; docker-compose up",
+    "deploy": "npm install; sls deploy"
   },
   "keywords": [
     "graphql",
@@ -22,11 +23,11 @@
     "graphql": "^0.13.2",
     "graphql-tools": "^2.24.0",
     "lodash": "^4.17.5",
-    "neo4j-driver": "^1.5.3",
-    "serverless-dynamodb-local": "^0.2.28"
+    "neo4j-driver": "^1.5.3"
   },
   "devDependencies": {
     "aws-sdk": "^2.224.1",
-    "serverless-offline": "^3.20.2"
+    "serverless-offline": "^3.20.2",
+    "serverless-dynamodb-local": "^0.2.28"
   }
 }

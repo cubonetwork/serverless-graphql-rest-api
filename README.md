@@ -75,6 +75,20 @@ npm run neo4j:start
 
 * [neo4j/seed-data.js](./neo4j/seed-data.js): the porpuse of this file is to create data on neo4j docker instance.
 
+# Deploy
+
+First of all you need to configure your AWS credentials:
+
+```bash
+sls config credentials --provider aws --key <your_aws_access_key> --secret <your_aws_secret_key>
+```
+
+After that:
+
+```bash
+npm run deploy
+```
+
 # About
 
 * devs@cubo.network

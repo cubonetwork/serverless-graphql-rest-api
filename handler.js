@@ -1,20 +1,11 @@
 const { graphqlLambda, graphiqlLambda } = require('apollo-server-lambda');
 const myGraphQLSchema = require('./graphql/schema');
 
-const graphqlHandler = async (event, context, callback) => {
-  callbackWithHeaders = (error, output) => {
-    output.headers['Access-Control-Allow-Origin'] = '*';
-    callback(error, output);
-  }
-
-  const handler = graphqlLambda({ 
-    schema: myGraphQLSchema,
-    tracing: true,
-    cacheControl: true
-  });
-
-  return handler(event, context, callbackWithHeaders);
-};
+const graphqlHandler = graphqlLambda({ 
+  schema: myGraphQLSchema,
+  tracing: true,
+  cacheControl: true
+});
 
 const graphiqlHandler = graphiqlLambda({
   endpointURL: '/graphql'

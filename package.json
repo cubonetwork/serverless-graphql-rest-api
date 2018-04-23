@@ -7,7 +7,7 @@
     "neo4j:start": "cd neo4j; docker-compose up",
     "deploy": "npm install; sls deploy",
     "test": "jest --no-cache tests",
-    "coverage:core": "jest --collectCoverageFrom=core/**.js --coverage core"
+    "coverage": "jest --collectCoverageFrom=src/**.js --coverage src"
   },
   "keywords": [
     "graphql",

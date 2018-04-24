@@ -1,6 +1,6 @@
-const UsersRepository = require('../core/repositories/repository-factory').getUsersRepository();
-const CompaniesRepository = require('../core/repositories/repository-factory').getCompaniesRepository();
-const ContactsRepository = require('../core/repositories/repository-factory').getContactsRepository();
+const UsersRepository = require('../core/repositories/dynamodb/users-repository');
+const CompaniesRepository = require('../core/repositories/dynamodb/companies-repository');
+const ContactsRepository = require('../core/repositories/dynamodb/contacts-repository');
 const ConnectionsService = require('../core/services/connections-service');
 
 const resolvers = {

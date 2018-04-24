@@ -32,7 +32,7 @@ provider:
 
 functions:
   graphql:
-    handler: handler.graphqlHandler
+    handler: src/handler.graphqlHandler
     events:
     - http:
         path: graphql
@@ -40,7 +40,7 @@ functions:
         cors: true
   
   graphiql:
-    handler: handler.graphiqlHandler
+    handler: src/handler.graphiqlHandler
     events:
     - http:
         path: graphiql

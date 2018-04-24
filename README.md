@@ -40,16 +40,16 @@ This implementation was based on the post [Running a scalable & reliable GraphQL
 
 Basically, the project contains two handlers, as you can see at [serverless.yml](./serverless.yml) file:
 
-* `graphql`: whose implementation is in [handler.js](./handler.js) file, more specifically at line 11. This handler is responsible to process requests throught GraphQL using apollo-server-lambda implementation. In other words is the Backend API of our project.
-* `graphiql`: whose implementation is in [handler.js](./handler.js) file, more specifically at line 25. This handler returns a GraphQL Client implementation called graphiql. Where you can write your queries and see the results.
+* `graphql`: whose implementation is in [src/handler.js](./src/handler.js) file, more specifically at line 11. This handler is responsible to process requests throught GraphQL using apollo-server-lambda implementation. In other words is the Backend API of our project.
+* `graphiql`: whose implementation is in [src/handler.js](./src/handler.js) file, more specifically at line 25. This handler returns a GraphQL Client implementation called graphiql. Where you can write your queries and see the results.
 
 Other important files are:
 
-* [graphql](./graphql/): The graphql folder contains the graphql schema used for this project. In this folder you will find all schema's types, resolvers and queries. 
-  * [schema.js](./graphql/schema.js): Where we define the GraphQL types, queries, mutations and subscriptions, which makes up the GraphQL Schema.
-  * [resolvers.js](./graphql/resolvers.js): The implementation of GraphQL resolvers based on types and queries defined at `schema.js`.
-  * [types.js](./graphql/types.js): Just an array of types which will by used at `schema.js`.
-* [core](./core/): The core folder contains the code to integrate with data layer. We have used DynamoDB to persist data.
+* [graphql](./src/graphql/): The graphql folder contains the graphql schema used for this project. In this folder you will find all schema's types, resolvers and queries. 
+  * [schema.js](./src/graphql/schema.js): Where we define the GraphQL types, queries, mutations and subscriptions, which makes up the GraphQL Schema.
+  * [resolvers.js](./src/graphql/resolvers.js): The implementation of GraphQL resolvers based on types and queries defined at `schema.js`.
+  * [types.js](./src/graphql/types.js): Just an array of types which will by used at `schema.js`.
+* [src/core](./src/core/): The core folder contains the code to integrate with data layer. We have used DynamoDB to persist data.
 * [dynamodb/seed-data](./dynamodb/seed-data/): The seed-data folder contains sample data used on offline mode. See `serverless-dynamodb-local` for more information.
 
 # See it in action
@@ -76,6 +76,22 @@ npm run neo4j:start
 ### Not implemented yet
 
 * [neo4j/seed-data.js](./neo4j/seed-data.js): the porpuse of this file is to create data on neo4j docker instance.
+
+# Test
+
+We are using [jest](https://facebook.github.io/jest/docs/en/getting-started.html) for testing.
+
+## Running tests
+
+```bash
+npm run test
+```
+
+## Coverage
+
+```bash
+npm run coverage
+```
 
 # Deploy
 

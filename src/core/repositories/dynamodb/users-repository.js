@@ -2,6 +2,10 @@ const Dynamo = require('../../infrastructure/aws/dynamodb');
 
 const TableName = `${process.env.STAGE}.users`;
 
+/**
+ * Returns user with the specified uid.
+ * @param {string} uid 
+ */
 const getByUid = uid => {
   let params = {
     TableName,

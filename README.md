@@ -93,6 +93,14 @@ npm run test
 npm run coverage
 ```
 
+# Documentation
+
+```bash
+npm run generate-docs
+```
+
+After see generated site in [./docs/index.html](./docs/index.html).
+
 # Deploy
 
 First of all you need to configure your AWS credentials:

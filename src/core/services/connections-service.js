@@ -1,8 +1,8 @@
 const _ = require('lodash/fp');
 const ContactsRepository = require('../repositories/dynamodb/contacts-repository');
 
-const getConnections = (companyId, contactsRepository = ContactsRepository) => {
-  return contactsRepository.getByCompanyId(companyId)
+const getConnections = companyId => {
+  return ContactsRepository.getByCompanyId(companyId)
     .then(contacts => {
       const connections = [];
 

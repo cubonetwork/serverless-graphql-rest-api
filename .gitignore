@@ -10,3 +10,6 @@ neo4j/db
 
 # tests
 coverage
+
+# documentation
+docs/src

@@ -30,7 +30,7 @@
     "aws-xray-sdk": "^1.2.0",
     "graphql": "^0.13.2",
     "graphql-tools": "^2.24.0",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.19",
     "neo4j-driver": "^1.5.3"
   },
   "devDependencies": {
